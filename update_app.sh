@@ -21,10 +21,10 @@ check_update_status() {
 }
 
 # Header
-echo -e "\n${BOLD}System Update Script${NC}"
+echo -e "\n${BOLD}System Update Script${NC}\n"
 
 # Prompt for sudo password upfront
-echo -e "\n${CYAN}Please enter your sudo password...${NC}"
+# echo -e "\n${CYAN}Please enter your sudo password...${NC}"
 sudo -v  # This will prompt for the sudo password without performing any actual commands
 
 # Update Nala
@@ -62,13 +62,13 @@ else
   echo -e "  ${YELLOW}⚠ Homebrew is not installed. Skipping...${NC}"
 fi
 
-# Install Firefox GNOME Theme (suppress all output)
-echo -e "\n${CYAN}4. Installing Firefox GNOME Theme...${NC}"
+# Install/Update Firefox GNOME Theme (suppress all output)
+echo -e "\n${CYAN}4. Updating Firefox GNOME Theme...${NC}"
 # Redirect both stdout and stderr to /dev/null
 if curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash &>/dev/null; then
-  echo -e "  ${GREEN}✔ Firefox GNOME Theme installed successfully.${NC}"
+  echo -e "  ${GREEN}✔ Firefox GNOME Theme updated successfully.${NC}"
 else
-  echo -e "  ${RED}✗ Firefox GNOME Theme installation failed.${NC}"
+  echo -e "  ${RED}✗ Firefox GNOME Theme updating failed.${NC}"
 fi
 
 # Update pipx
@@ -81,5 +81,5 @@ else
 fi
 
 # Footer
-echo -e "\n${GREEN}All updates completed!${NC}"
+echo -e "\n${GREEN}All updates completed!${NC}\n"
 
