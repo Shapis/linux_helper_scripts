@@ -10,7 +10,7 @@ NC='\033[0m' # No color
 
 # Function to list installed apps via Nala (APT wrapper)
 list_nala_apps() {
-    echo -e "\n${CYAN}Listing apps installed with Nala...${NC}\n"
+    echo -e "\n${CYAN}Listing apps installed with Nala...${NC}"
     if command -v nala &> /dev/null; then
         nala list --installed
     else
@@ -20,7 +20,7 @@ list_nala_apps() {
 
 # Function to list installed apps via Brew
 list_brew_apps() {
-    echo -e "\n${CYAN}Listing apps installed with Brew...${NC}\n"
+    echo -e "\n${CYAN}Listing apps installed with Brew...${NC}"
     if command -v brew &> /dev/null; then
         brew list
     else
@@ -30,7 +30,7 @@ list_brew_apps() {
 
 # Function to list installed apps via Flatpak
 list_flatpak_apps() {
-    echo -e "\n${CYAN}Listing apps installed with Flatpak...${NC}\n"
+    echo -e "\n${CYAN}Listing apps installed with Flatpak...${NC}"
     if command -v flatpak &> /dev/null; then
         flatpak list --app
     else
