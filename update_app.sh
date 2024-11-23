@@ -31,7 +31,7 @@ sudo -v  # This will prompt for the sudo password without performing any actual 
 echo -e "\n${CYAN}1. Updating Nala...${NC}"
 if command -v nala &>/dev/null; then
   # Unfiltered output for nala update and upgrade
-  sudo nala update && sudo nala upgrade -y
+  sudo nala upgrade
   check_update_status "Nala update and upgrade" "$?"
 else
   echo -e "  ${YELLOW}⚠ Nala is not installed. Skipping...${NC}"
@@ -64,7 +64,7 @@ else
   echo -e "  ${YELLOW}⚠ Homebrew is not installed. Skipping...${NC}"
 fi
 
-# Install/Update Firefox GNOME Theme (suppress all output)
+# Install/Update Firefox GNOME Theme
 echo -e "\n${CYAN}4. Updating Firefox GNOME Theme...${NC}"
 # Unfiltered output for curl script execution
 if curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash; then
