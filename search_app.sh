@@ -42,5 +42,5 @@ if [ $? -ne 0 ]; then
     echo -e "${RED}✗ Error while searching Nala.${NC}"
 fi
 
-echo -e "\n${GREEN}Search completed.${NC}"
+echo -e "\n${GREEN}Search completed.\n${NC}"
 
