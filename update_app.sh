@@ -30,8 +30,9 @@ sudo -v  # This will prompt for the sudo password without performing any actual 
 # Update Nala
 echo -e "\n${CYAN}1. Updating Nala...${NC}"
 if command -v nala &>/dev/null; then
-  nala_output=$(sudo nala update && sudo nala upgrade -y 2>&1)
-  check_update_status "Nala update and upgrade" "$nala_output"
+  # Unfiltered output for nala update and upgrade
+  sudo nala update && sudo nala upgrade -y
+  check_update_status "Nala update and upgrade" "$?"
 else
   echo -e "  ${YELLOW}⚠ Nala is not installed. Skipping...${NC}"
 fi
@@ -39,8 +40,9 @@ fi
 # Update Flatpak
 echo -e "\n${CYAN}2. Updating Flatpak...${NC}"
 if command -v flatpak &>/dev/null; then
-  flatpak_output=$(flatpak update -y 2>&1)
-  check_update_status "Flatpak update" "$flatpak_output"
+  # Unfiltered output for flatpak update
+  flatpak update -y
+  check_update_status "Flatpak update" "$?"
 else
   echo -e "  ${YELLOW}⚠ Flatpak is not installed. Skipping...${NC}"
 fi
@@ -48,7 +50,7 @@ fi
 # Update Homebrew
 echo -e "\n${CYAN}3. Updating Homebrew...${NC}"
 if command -v brew &>/dev/null; then
-  # Capture output of `brew update`
+  # Capture output of `brew update` and `brew upgrade`
   brew_output=$(brew update 2>&1)
   
   # Check if Homebrew is up-to-date, suppressing redundant messages
@@ -64,12 +66,13 @@ fi
 
 # Install/Update Firefox GNOME Theme (suppress all output)
 echo -e "\n${CYAN}4. Updating Firefox GNOME Theme...${NC}"
-# Redirect both stdout and stderr to /dev/null
-if curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash &>/dev/null; then
+# Unfiltered output for curl script execution
+if curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash; then
   echo -e "  ${GREEN}✔ Firefox GNOME Theme updated successfully.${NC}"
 else
   echo -e "  ${RED}✗ Firefox GNOME Theme updating failed.${NC}"
 fi
+
 
 # Update pipx
 echo -e "\n${CYAN}5. Updating pipx...${NC}"

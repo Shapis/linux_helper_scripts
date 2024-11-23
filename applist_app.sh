@@ -12,6 +12,7 @@ NC='\033[0m' # No color
 list_nala_apps() {
     echo -e "\n${CYAN}Listing apps installed with Nala...${NC}"
     if command -v nala &> /dev/null; then
+        # Unfiltered output for nala list
         nala list --installed
     else
         echo -e "  ${YELLOW}⚠ Nala is not installed. Skipping...${NC}"
@@ -22,6 +23,7 @@ list_nala_apps() {
 list_brew_apps() {
     echo -e "\n${CYAN}Listing apps installed with Brew...${NC}"
     if command -v brew &> /dev/null; then
+        # Unfiltered output for brew list
         brew list
     else
         echo -e "  ${YELLOW}⚠ Homebrew is not installed. Skipping...${NC}"
@@ -32,6 +34,7 @@ list_brew_apps() {
 list_flatpak_apps() {
     echo -e "\n${CYAN}Listing apps installed with Flatpak...${NC}"
     if command -v flatpak &> /dev/null; then
+        # Unfiltered output for flatpak list
         flatpak list --app
     else
         echo -e "  ${YELLOW}⚠ Flatpak is not installed. Skipping...${NC}"

@@ -23,36 +23,24 @@ print_header() {
 
 # Search in Homebrew (brew)
 print_header "Homebrew"
-if brew_output=$(brew search "$app_name" 2>/dev/null); then
-    if [ -n "$brew_output" ]; then
-        echo "$brew_output"
-    else
-        echo -e "${RED}✗ No results found in Homebrew.${NC}"
-    fi
-else
+brew search "$app_name" 2>/dev/null
+if [ $? -ne 0 ]; then
     echo -e "${RED}✗ Error while searching Homebrew.${NC}"
 fi
 
 # Search in Flatpak
 print_header "Flathub"
-flatpak_output=$(flatpak search "$app_name" 2>&1)
-if echo "$flatpak_output" | grep -qi "No matches found"; then
-    echo -e "${RED}✗ No results found in Flathub.${NC}"
-else
-    echo "$flatpak_output"
+flatpak search "$app_name" 2>&1
+if [ $? -ne 0 ]; then
+    echo -e "${RED}✗ Error while searching Flathub.${NC}"
 fi
 
 # Search in Nala
 print_header "Nala"
-if nala_output=$(nala search "$app_name" 2>/dev/null); then
-    if [ -n "$nala_output" ]; then
-        echo "$nala_output"
-    else
-        echo -e "${RED}✗ No results found in Nala.${NC}"
-    fi
-else
+nala search "$app_name" 2>/dev/null
+if [ $? -ne 0 ]; then
     echo -e "${RED}✗ Error while searching Nala.${NC}"
 fi
 
-echo -e "\n${GREEN}Search completed.${NC}\n"
+echo -e "\n${GREEN}Search completed.${NC}"
 
