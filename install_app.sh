@@ -121,7 +121,7 @@ install_app() {
     all_choices=("$brew_search" "$nala_search" "$flatpak_search")
     for i in "${!all_options[@]}"; do
         if [ -n "${all_choices[$i]}" ]; then
-            echo -e "  $((i+1))) ${all_options[$i]}: ${all_choices[$i]}"
+            echo -e "  $((i+1))) ${all_options[$i]}: ${GREEN}${all_choices[$i]}${NC}"
         else
             echo -e "  $((i+1))) ${all_options[$i]}: ${YELLOW}Not found${NC}"
         fi
