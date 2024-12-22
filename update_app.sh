@@ -61,28 +61,15 @@ if command -v brew &>/dev/null; then
     check_update_status "Homebrew update and upgrade" "$brew_upgrade_output"
   fi
 else
-  echo -e "  ${YELLOW}⚠ Homebrew is not installed. Skipping...${NC}"
+  echo -e "  ${YELLOW}⚠ Homebrew is not installed. Skipping...\n${NC}"
 fi
 
-# Install/Update Firefox GNOME Theme
-echo -e "\n${CYAN}4. Updating Firefox GNOME Theme...${NC}"
-# Unfiltered output for curl script execution
-if curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash; then
-  echo -e "  ${GREEN}✔ Firefox GNOME Theme updated successfully.${NC}"
-else
-  echo -e "  ${RED}✗ Firefox GNOME Theme updating failed.${NC}"
-fi
-
-
-# Update pipx
-echo -e "\n${CYAN}5. Updating pipx...${NC}"
-if command -v pipx &>/dev/null; then
-  pipx_output=$(pipx upgrade-all 2>&1)
-  check_update_status "pipx update" "$pipx_output"
-else
-  echo -e "  ${YELLOW}⚠ pipx is not installed. Skipping...${NC}"
-fi
-
-# Footer
-echo -e "\n${GREEN}All updates completed!${NC}\n"
+# # Install/Update Firefox GNOME Theme
+# echo -e "\n${CYAN}4. Updating Firefox GNOME Theme...${NC}"
+# # Unfiltered output for curl script execution
+# if curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash; then
+#   echo -e "  ${GREEN}✔ Firefox GNOME Theme updated successfully.${NC}"
+# else
+#   echo -e "  ${RED}✗ Firefox GNOME Theme updating failed.${NC}"
+# fi
 

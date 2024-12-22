@@ -23,8 +23,8 @@ list_nala_apps() {
 list_brew_apps() {
     echo -e "\n${CYAN}Listing apps installed with Brew...${NC}"
     if command -v brew &> /dev/null; then
-        # Unfiltered output for brew list
-        brew list
+        # Unfiltered output for brew leaves, --installed-on-request might be needed.
+        brew leaves 
     else
         echo -e "  ${YELLOW}⚠ Homebrew is not installed. Skipping...${NC}"
     fi
