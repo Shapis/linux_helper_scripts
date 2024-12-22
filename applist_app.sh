@@ -13,7 +13,7 @@ list_nala_apps() {
     echo -e "\n${CYAN}Listing apps installed with Nala...${NC}"
     if command -v nala &> /dev/null; then
         # Unfiltered output for nala list
-        nala list --installed
+        nala list --nala-installed
     else
         echo -e "  ${YELLOW}⚠ Nala is not installed. Skipping...${NC}"
     fi
