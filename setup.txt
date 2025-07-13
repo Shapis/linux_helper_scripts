@@ -1,0 +1,42 @@
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+sudo pacman -S firefox ttf-liberation bat rustup
+
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+
+paru -S --needed adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts android-studio android-tools apparmor aspnet-runtime bash-completion bat blender chromium cmake cpupower decibels discord dotnet-sdk duf dust eza fastfetch fd firefox fractal fragments fzf gimp git git-lfs gnome-boxes gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-just-perfection-desktop gnome-shell-pomodoro gnuradio-companion godot-mono hyperfine jdk-openjdk kdenlive kernel-modules-hook kicad krita libreoffice-fresh loupe memtest86+-efi mesa-utils msedit nautilus noto-fonts-cjk noto-fonts-extra oath-toolkit obs-studio obsidian otf-monaspace otf-montserrat pacman-contrib papers perl-file-homedir perl-yaml-tiny plymouth powertop proton-vpn-gtk-app reflector ripgrep rtl-sdr rustup sbctl showtime signal-desktop spotify-launcher supergfxctl syncthing tealdeer texlive texlive-lang tokei topgrade ttf-caladea ttf-carlito ttf-dejavu ttf-fira-code ttf-liberation ttf-roboto typst unityhub unp visual-studio-code-bin yt-dlp zoxide qt6-multimedia-gstreamer
+
+
+paru -Rns epiphany evince gnome-music gnome-software nano sushi totem vim htop
+
+sbctl status
+sudo sbctl create-keys
+sudo sbctl enroll-keys --microsoft
+sudo sbctl verify
+
+sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux-fallback.efi
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux-lts-fallback.efi
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux-lts.efi
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux-zen-fallback.efi
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux-zen.efi
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux.efi
+sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+sudo sbctl sign -s /boot/memtest86+/memtest.efi
+sudo sbctl sign -s /boot/vmlinuz-linux
+sudo sbctl sign -s /boot/vmlinuz-linux-lts
+sudo sbctl sign -s /boot/vmlinuz-linux-zen
+
+sudo sbctl verify
+
+systemctl enable bluetooth.service --now
+
+systemctl enable --user gcr-ssh-agent.socket --now
+
+systemctl enable paccache.timer
+
+flatpak install flathub com.valvesoftware.Steam
+
